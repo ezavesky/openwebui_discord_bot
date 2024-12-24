@@ -1,0 +1,20 @@
+name: Pull request
+on:
+    pull_request:
+        types: [review_requested, opened, reopened, synchronize]
+        branches:
+            - main
+            - master
+
+jobs:
+    testing:
+        uses: ./.github/workflows/testing.yml
+        with:
+          call-source: pull_request
+        secrets: inherit
+    coverage:
+        #  https://docs.github.com/en/actions/quickstart
+        needs: testing
+        uses: ./.github/workflows/coverage.yml
+        with:
+          call-source: pull_request

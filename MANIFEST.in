@@ -1,0 +1,3 @@
+include *.py
+recursive-include openwebui_discord_bot *
+recursive-include assets *

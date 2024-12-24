@@ -1,6 +1,6 @@
 import os
 
-from src import bot
+from . import bot
 from dotenv import load_dotenv
 from g4f.cookies import set_cookies
 

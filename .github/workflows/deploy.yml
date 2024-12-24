@@ -1,0 +1,23 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  testing:
+    uses: ./.github/workflows/testing.yml
+    with:
+      call-source: deploy
+    secrets: inherit      # inherit all screts
+  versioning:
+    needs: testing
+    uses: ./.github/workflows/versioning.yml
+    with:
+      call-source: deploy
+  # publish:
+  #   needs: versioning
+  #   uses: ./.github/workflows/publish_aws.yml
+  #   with:
+  #     call-source: deploy
+  #   secrets: inherit      # inherit all screts

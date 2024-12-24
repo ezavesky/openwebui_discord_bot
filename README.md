@@ -1,6 +1,7 @@
-# ChatGPT Discord Bot
+# OpenWebUI Discord Bot
 
-> ### Build your own Discord bot using ChatGPT
+## Build your own Discord bot using OpenWebUI
+This repo derived from [chatGPT-discord-bot](https://github.com/Zero6992/chatGPT-discord-bot) after customization for OpenWebUI.
 
 ---
 > [!IMPORTANT]
@@ -17,7 +18,7 @@
 ## Prerequisites
 * **Python 3.9 or later**
 * **Rename the file `.env.example` to `.env`**
-* Running `pip3 install -r requirements.txt` to install the required dependencies
+* Running `poetry install` to install the required dependencies
 * Google Chrome for [Image Generation](https://github.com/Zero6992/chatGPT-discord-bot?tab=readme-ov-file#image-generation)
 ---
 ## Step 1: Create a Discord bot
@@ -45,15 +46,15 @@
 
 1. Open a terminal or command prompt
 
-2. Navigate to the directory where you installed the ChatGPT Discord bot
+2. Navigate to the directory where you installed the OpenWebUI Discord bot
 
-3. Run `python3 main.py` or `python main.py` to run the bot
+3. Run `poetry run main.py` to run the bot
 ---
 ## Step 2: Run the bot with Docker
 
 1. Build the Docker image & run the Docker container with `docker compose up -d`
 
-2. Inspect whether the bot works well `docker logs -t chatgpt-discord-bot`
+2. Inspect whether the bot works well `docker logs -t openwebui_discord_bot`
 
    ### Stop the bot:
 
@@ -102,7 +103,7 @@
 * A system prompt would be invoked when the bot is first started or reset
 * You can set it up by modifying the content in `system_prompt.txt`
 * All the text in the file will be fired as a prompt to the bot
-* Get the first message from ChatGPT in your discord channel!
+* Get the first message from OpenWebUI in your discord channel!
 * Go Discord setting turn `developer mode` on
 
    1. Right-click the channel you want to recieve the message, `Copy  ID`
@@ -120,19 +121,19 @@
 ------
 ## Commands
 
-* `/chat [message]` Chat with ChatGPT/Gemini
+* `/chat [message]` Chat with OpenWebUI/Gemini
 * `/draw [prompt]` Generate an image with Gemini/OpenAI/Bing
-* `/switchpersona [persona]` Switch between optional chatGPT jailbreaks
+* `/switchpersona [persona]` Switch between optional OpenWebUI jailbreaks
    * `random`: Picks a random persona
-   * `standard`: Standard chatGPT mode
-   * `dan`: DAN 13.5 (Latest Working ChatGPT Jailbreak prompt)
+   * `standard`: Standard OpenWebUI mode
+   * `dan`: DAN 13.5 (Latest Working OpenWebUI Jailbreak prompt)
    * `Smart mode`: AIM (Always Intelligent and Machiavellian)
    * `Developer Mode`: software developer who specializes in the AI's area
 
-* `/private` ChatGPT switch to private mode
-* `/public` ChatGPT switch to public mode
-* `/replyall` ChatGPT switch between replyAll mode and default mode
-* `/reset` Clear ChatGPT conversation history
+* `/private` OpenWebUI switch to private mode
+* `/public` OpenWebUI switch to public mode
+* `/replyall` OpenWebUI switch between replyAll mode and default mode
+* `/reset` Clear OpenWebUI conversation history
 * `/chat-model` Switch different chat model
    * `gpt-4`: GPT-4 model
    * `Gemini`: Google Gemini Model
