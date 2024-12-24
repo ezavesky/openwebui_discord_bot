@@ -29,12 +29,12 @@ if [ ! -f "$SSH_KEY_PATH" ]; then
         SSH_KEY_PATH="$HOME/.ssh/id_rsa"
     fi
 fi
-# if [ ! -f "$SSH_KEY_PATH/id_rsa" ] && [ ! -f "$SSH_KEY_PATH/.git-credentials" ]; then
-if [ ! -f "$SSH_KEY_PATH" ] ; then
-    echo "No SSH key (e.g. 'id_rsa') found in '$SSH_KEY_PATH'"
-    echo "Please ensure you have an SSH path for the build.  It's required to get to the private repo for the Fyve API library."
-    exit 1
-fi
+
+# if [ ! -f "$SSH_KEY_PATH" ] ; then
+#     echo "No SSH key (e.g. 'id_rsa') found in '$SSH_KEY_PATH'"
+#     echo "Please ensure you have an SSH path for the build.  It's required to get to the private repo for the Fyve API library."
+#     exit 1
+# fi
 
 echo "SSH Key Path: $SSH_KEY_PATH"
 DOCKER_BUILDKIT=1 docker build -t $IMAGE_NAME:$TAG --build-arg DEV=$DEV --ssh github_ssh_key=$SSH_KEY_PATH -f Dockerfile .
