@@ -1,4 +1,4 @@
-from AutoLogin import GoogleBardAutoLogin, MicrosoftBingAutoLogin
+from openwebui_discord_bot.auto_login.AutoLogin import GoogleBardAutoLogin, MicrosoftBingAutoLogin
 from dotenv import load_dotenv
 import os
 from time import sleep

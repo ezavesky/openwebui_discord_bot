@@ -1,5 +1,8 @@
 # Generated image files
 images/
+# private env config
+.env
+har_and_cookies
 
 config.json
 cookies.json

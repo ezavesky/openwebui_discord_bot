@@ -1,16 +1,16 @@
 import os
 import asyncio
 import discord
-from src.log import logger
+from discord import app_commands
 
 from g4f.client import Client
-from g4f.Provider import (RetryProvider, FreeGpt, ChatgptNext, AItianhuSpace,
-                        You, OpenaiChat, FreeChatgpt, Liaobots,
+from g4f.Provider import (RetryProvider, # FreeGpt, ChatgptNext, AItianhuSpace,
+                        You, OpenaiChat, # FreeChatgpt, Liaobots,
                         Gemini, Bing)
 
-from src.aclient import discordClient
-from discord import app_commands
-from src import log, art, personas
+from .aclient import discordClient
+from .log import logger
+from . import log, art, personas
 
 
 def run_discord_bot():
@@ -96,16 +96,17 @@ def run_discord_bot():
         try:
             if model.value == "gemini":
                 discordClient.reset_conversation_history()
-                discordClient.chatBot = Client(provider=RetryProvider([Gemini, FreeChatgpt], shuffle=False))
+                # discordClient.chatBot = Client(provider=RetryProvider([Gemini, FreeChatgpt], shuffle=False))
+                discordClient.chatBot = Client(provider=RetryProvider([Gemini], shuffle=False))
                 discordClient.chatModel = model.value
             elif model.value == "gpt-4":
                 discordClient.reset_conversation_history()
                 discordClient.chatBot = Client(provider=RetryProvider([Liaobots, You, OpenaiChat, Bing], shuffle=False))
                 discordClient.chatModel = model.value
-            elif model.value == "gpt-3.5-turbo":
-                discordClient.reset_conversation_history()
-                discordClient.chatBot = Client(provider=RetryProvider([FreeGpt, ChatgptNext, AItianhuSpace], shuffle=False))
-                discordClient.chatModel = model.value
+            # elif model.value == "gpt-3.5-turbo":
+            #     discordClient.reset_conversation_history()
+            #     discordClient.chatBot = Client(provider=RetryProvider([FreeGpt, ChatgptNext, AItianhuSpace], shuffle=False))
+            #     discordClient.chatModel = model.value
 
             await interaction.followup.send(f"> **INFO: Chat model switched to {model.name}.**")
             logger.info(f"Switched chat model to {model.name}")

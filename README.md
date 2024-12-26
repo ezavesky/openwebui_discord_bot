@@ -36,10 +36,11 @@ This repo derived from [chatGPT-discord-bot](https://github.com/Zero6992/chatGPT
 
    ![image](https://user-images.githubusercontent.com/89479282/205949323-4354bd7d-9bb9-4f4b-a87e-deb9933a89b5.png)
 
-6. Invite your bot to your server via OAuth2 URL Generator
+6. Invite your bot to your server 
 
-   ![image](https://user-images.githubusercontent.com/89479282/205949600-0c7ddb40-7e82-47a0-b59a-b089f929d177.png)
-
+   - via OAuth2 URL Generator
+      ![image](https://user-images.githubusercontent.com/89479282/205949600-0c7ddb40-7e82-47a0-b59a-b089f929d177.png)
+   - Or via the standard [bot preview](https://discordpy.readthedocs.io/en/stable/discord.html)
 
 
 ## Step 2: Run the bot on the desktop
@@ -48,7 +49,7 @@ This repo derived from [chatGPT-discord-bot](https://github.com/Zero6992/chatGPT
 
 2. Navigate to the directory where you installed the OpenWebUI Discord bot
 
-3. Run `poetry run main.py` to run the bot
+3. Run `poetry run python3 -m openwebui_discord_bot.main` to run the bot
 ---
 ## Step 2: Run the bot with Docker
 

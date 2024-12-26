@@ -1,5 +1,5 @@
 # Use the official slim Python 3.11 image as the base image
-FROM python:3.10-slim as base
+FROM python:3.13-slim as base
 
 #################### construct a "base" image with poetry
 

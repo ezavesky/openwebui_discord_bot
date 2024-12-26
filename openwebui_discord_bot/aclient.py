@@ -2,8 +2,8 @@ import os
 import discord
 import asyncio
 
-from src import personas
-from src.log import logger
+from . import personas
+from .log import logger
 from utils.message_utils import send_split_message
 
 from dotenv import load_dotenv
@@ -12,9 +12,8 @@ from asgiref.sync import sync_to_async
 
 import g4f.debug
 from g4f.client import Client
-from g4f.stubs import ChatCompletion
-from g4f.Provider import RetryProvider, OpenaiChat, Aichatos, Liaobots # gpt-4
-from g4f.Provider import  Blackbox  # gpt-3.5-turbo
+from g4f.client.stubs import ChatCompletion
+from g4f.Provider import RetryProvider, OpenaiChat, Liaobots, Blackbox
 
 from openai import AsyncOpenAI
 
@@ -29,7 +28,8 @@ class discordClient(discord.Client):
         super().__init__(intents=intents)
         self.tree = app_commands.CommandTree(self)
         self.chatBot = Client(
-            provider = RetryProvider([OpenaiChat, Aichatos, Blackbox, Liaobots], shuffle=False),
+            provider = RetryProvider([OpenaiChat, Blackbox, Liaobots], shuffle=False),
+            # provider = RetryProvider([OpenaiChat, Aichatos, Blackbox, Liaobots], shuffle=False),
         )
         self.chatModel = os.getenv("MODEL")
         self.conversation_history = []
@@ -85,7 +85,7 @@ class discordClient(discord.Client):
         try:
             if self.starting_prompt and discord_channel_id:
                 channel = self.get_channel(int(discord_channel_id))
-                logger.info(f"Send system prompt with size {len(self.starting_prompt)}")
+                logger.info(f"Send system prompt with size {len(self.starting_prompt)}; object {channel}")
 
                 response = await self.handle_response(self.starting_prompt)
                 await channel.send(f"{response}")
